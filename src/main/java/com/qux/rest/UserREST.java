@@ -248,7 +248,7 @@ public class UserREST extends MongoREST {
 		json.put("lastUpdate", System.currentTimeMillis());
 		json.put("email", json.getString("email").toLowerCase());
 		json.put("external", true);
-		json.put("role", User.USER);
+		json.put("role",  json.getString("role").toLowerCase());
 		json.put("plan", "Free");
 		json.put("newsletter", false);
 		json.put("lastNotification", 0);
@@ -300,7 +300,7 @@ public class UserREST extends MongoREST {
 		json.put("lastUpdate", System.currentTimeMillis());
 		json.put("email", json.getString("email").toLowerCase());
 		json.put("password", Util.hashPassword(json.getString("password")));
-		json.put("role", User.USER);
+		json.put("role", json.getString("role").toLowerCase());
 		json.put("plan", "free");
 		json.put("newsletter", false);
 		json.put("lastNotification", 0);

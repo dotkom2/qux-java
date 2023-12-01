@@ -30,7 +30,7 @@ public class AppAcl extends MongoAcl implements Acl{
 	
 	@Override
 	public void canCreate(User user, RoutingContext event, Handler<Boolean> handler) {
-		if(user.hasRole(User.USER)){
+		if(user.hasRole(User.CLIENT)){
 			handler.handle(true);
 		} else {
 			handler.handle(false);

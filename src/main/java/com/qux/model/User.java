@@ -1,6 +1,7 @@
 package com.qux.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -16,8 +17,10 @@ public class User extends Model implements Serializable {
 	 */
 	private static final long serialVersionUID = -9119653686209363893L;
 
-	public static final String USER = "user";
-	
+	public static final String CLIENT = "client";
+	public static final String DEVELOPER = "developer";
+	public static final String QA = "QA";
+
 	public static final String GUEST = "guest";
 
 	public static final String STATUS_RETIRED = "retired";
@@ -240,10 +243,6 @@ public class User extends Model implements Serializable {
 	public boolean isGuest() {
 		return User.GUEST.equals(getRole());
 	}
-	@JsonIgnore
-	public boolean isUser() {
-		return User.USER.equals(getRole());
-	}
 
 	public boolean isAcceptedGDPR() {
 		return acceptedGDPR;
@@ -270,20 +269,27 @@ public class User extends Model implements Serializable {
 	 *********************************************************************/
 
 
+
+	public boolean hasAnyRole(String... roles){
+		return Arrays.asList(roles).stream().anyMatch(this::hasRole);
+	}
+
 	public boolean hasRole(String role){
+
+		if(role == null) {
+			return false;
+		}
 		
 		/**
 		 * Guest is the lowest role. users and guests have it
 		 */
+
 		if(role == User.GUEST){
-			return User.GUEST.equals(this.role) || User.USER.equals(this.role);
+			return true;
 		}
-		
-		if(role == User.USER){
-			return User.USER.equals(this.role) ;
-		}
-		
-		return false;
+
+
+		return role.equals(this.role);
 	}
 	
 	

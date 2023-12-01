@@ -45,7 +45,7 @@ public class MongoREST extends CrudREST {
 	}
 
 	public void getACLList(User user, Handler<String> handler) {
-		if (!user.hasRole(User.USER)) {
+		if (!user.hasAnyRole(User.CLIENT, User.DEVELOPER, User.QA)) {
 			handler.handle("[] - User is guest");
 		} else {
 			mongo.find(team_db, Team.findByUser(user), res ->{

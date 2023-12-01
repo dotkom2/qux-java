@@ -8,13 +8,13 @@ public class RoleACL implements Acl{
 	
 	private final Acl acl;
 	
-	private String createRole = User.USER;
+	private String createRole = User.CLIENT;
 	
-	private String readRole = User.USER;
+	private String readRole = User.CLIENT;
 	
-	private String writeRole = User.USER;
+	private String writeRole = User.CLIENT;
 	
-	private String deleteRole = User.USER;
+	private String deleteRole = User.CLIENT;
 	
 	
 	public RoleACL(Acl a){

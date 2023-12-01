@@ -33,7 +33,7 @@ public class EventAcl extends MongoAcl implements Acl{
 
 	@Override
 	public void canRead(User user, RoutingContext event,Handler<Boolean> handler) {
-		if(user.hasRole(User.USER)){
+		if(user.hasRole(User.CLIENT)){
 			String appID = event.request().params().get("appID");
 			client.count(team_db, Team.canRead(user, appID), res->{
 				assertOne(res, handler, event);
@@ -51,7 +51,7 @@ public class EventAcl extends MongoAcl implements Acl{
 
 	@Override
 	public void canDelete(User user, RoutingContext event,	Handler<Boolean> handler) {
-		if(user.hasRole(User.USER)){
+		if(user.hasAnyRole(User.CLIENT, User.DEVELOPER, User.QA)){
 			String appID = event.request().params().get("appID");
 			client.count(team_db, Team.canWrite(user, appID), res->{
 				assertOne(res, handler, event);

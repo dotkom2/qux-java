@@ -20,7 +20,7 @@ public class PublicComentACL extends MongoAcl implements Acl{
 	
 	@Override
 	public void canCreate(User user, RoutingContext event, Handler<Boolean> handler) {
-		if(user.hasRole(User.USER)){
+		if(user.hasAnyRole(User.CLIENT, User.DEVELOPER, User.QA)){
 			handler.handle(true);
 		} else{
 			handler.handle(false);

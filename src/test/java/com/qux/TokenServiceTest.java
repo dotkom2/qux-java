@@ -40,7 +40,7 @@ public class TokenServiceTest {
 		JsonObject json = new JsonObject()
 				.put("_id", "id1")
 				.put("email", "klaus@quant-ux.de")
-				.put("role", User.USER);
+				.put("role", User.CLIENT);
 		String token = ts.getToken(json);
 		
 		Assert.assertNotNull(token);
@@ -49,7 +49,7 @@ public class TokenServiceTest {
 		Assert.assertNotNull(user);
 		Assert.assertEquals("id1", user.getId());
 		Assert.assertEquals("klaus@quant-ux.de", user.getEmail());
-		Assert.assertEquals(User.USER, user.getRole());
+		Assert.assertEquals(User.CLIENT, user.getRole());
 	}
 	
 	
@@ -63,7 +63,7 @@ public class TokenServiceTest {
 		JsonObject json = new JsonObject()
 				.put("_id", "id1")
 				.put("email", "klaus@quant-ux.de")
-				.put("role", User.USER);
+				.put("role", User.CLIENT);
 		String token = ts.getToken(json);
 		
 		Assert.assertNotNull(token);
@@ -86,7 +86,7 @@ public class TokenServiceTest {
 		JsonObject json = new JsonObject()
 				.put("_id", "id1")
 				.put("email", "klaus@quant-ux.de")
-				.put("role", User.USER);
+				.put("role", User.CLIENT);
 		String token = ts.getToken(json, -2);
 		
 		Assert.assertNotNull(token);
@@ -106,7 +106,7 @@ public class TokenServiceTest {
 		JsonObject json = new JsonObject()
 				.put("_id", "id1")
 				.put("email", "klaus@quant-ux.de")
-				.put("role", User.USER);
+				.put("role", User.CLIENT);
 		String token = ts.getToken(json);
 
 		Assert.assertNotNull(token);

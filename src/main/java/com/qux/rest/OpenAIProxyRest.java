@@ -32,7 +32,7 @@ public class OpenAIProxyRest extends REST {
         logger.info("forward() > enter");
 
         User user = getUser(event);
-        if (!user.hasRole(User.USER)) {
+        if (!user.hasAnyRole(User.CLIENT, User.DEVELOPER, User.QA)) {
             logger.error("forward() > exit > Error! User " + user.getEmail() + " tried to proxy");
             returnError(event, 401);
             return;

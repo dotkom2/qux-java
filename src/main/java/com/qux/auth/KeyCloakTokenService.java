@@ -101,7 +101,7 @@ public class KeyCloakTokenService implements ITokenService{
 
             String id = jwt.getSubject();
             String email = this.config.getClaimEmail() != "" ?  jwt.getClaim(this.config.getClaimEmail()).asString() : jwt.getSubject();
-            String role = User.USER;
+            String role = this.config.getClaimRole() !=  "" ? jwt.getClaim(this.config.getClaimEmail()).asString() : "guest";
             String name = this.config.getClaimName() != "" ?  jwt.getClaim(this.config.getClaimName()).asString() : "KeyCloakUser";
             String lastname = this.config.getClaimLastName() != "" ?  jwt.getClaim(this.config.getClaimLastName()).asString() : "KeyCloakUser";
 

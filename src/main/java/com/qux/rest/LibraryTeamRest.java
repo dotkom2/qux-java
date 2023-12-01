@@ -322,7 +322,7 @@ public class LibraryTeamRest extends MongoREST {
 		event.response().putHeader("content-type", "application/json");
 		
 		User user = getUser(event);
-		if(User.USER.equals(user.getRole())){
+		if(user.hasAnyRole(User.CLIENT, User.DEVELOPER, User.QA)){
 			
 			/**
 			 * Very ugly. Here we do a three times join!!!

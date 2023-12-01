@@ -920,7 +920,7 @@ public class MatcTestCase {
 		user.setName(name);
 		user.setLastname("Tester");
 		user.setTos(true);
-		user.setRole(User.USER);
+		user.setRole(User.CLIENT);
 		user.setEmail(name + "@quant-ux.de");
 
 		return user;
@@ -930,7 +930,7 @@ public class MatcTestCase {
 
 		User user = new User();
 		user.setName(name);
-		user.setRole(User.USER);
+		user.setRole(User.CLIENT);
 		user.setEmail(name + "@quant-ux.de");
 
 		JsonObject json = mapper.toVertx(user);

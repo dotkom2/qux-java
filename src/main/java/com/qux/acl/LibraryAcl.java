@@ -27,7 +27,7 @@ public class LibraryAcl extends MongoAcl implements Acl{
 	}
 
 	public void canCreate(User user, RoutingContext event, Handler<Boolean> handler) {
-		if(user.hasRole(User.USER)){
+		if(user.hasAnyRole(User.CLIENT)){
 			handler.handle(true);
 		} else {
 			handler.handle(false);

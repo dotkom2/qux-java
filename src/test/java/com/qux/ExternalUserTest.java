@@ -24,12 +24,13 @@ public class ExternalUserTest  extends MatcTestCase {
         JsonObject user = new JsonObject()
                 .put("id", "b099e979-55a0-4e6b-bd1d-e36ca8e54192")
                 .put("email", "klaus@external.com")
+                .put("role", "client")
                 .put("name", "Klaus");
 
         // post once, user gets created
         JsonObject response = post("/rest/user/external", user);
         context.assertNotNull(response);
-        context.assertEquals(User.USER, response.getString("role"));
+        context.assertEquals(User.CLIENT, response.getString("role"));
         context.assertEquals(user.getString("id"), response.getString("id"));
 
         // assert one user created
@@ -38,7 +39,7 @@ public class ExternalUserTest  extends MatcTestCase {
         // post the user again
         response = post("/rest/user/external", user);
         context.assertNotNull(response);
-        context.assertEquals(User.USER, response.getString("role"));
+        context.assertEquals(User.CLIENT, response.getString("role"));
         context.assertEquals(user.getString("id"), response.getString("id"));
 
         // no additional user created
